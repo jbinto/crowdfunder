@@ -1,0 +1,10 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.brand{:href => '#'} CrowdFunder
+      .nav-collapse.collapse
+        %ul.nav
+          %li{:class => ('active' if current_page?(root_path)) }
+            = link_to 'Home', :root
+          %li{:class => ('active' if current_page?(projects_path)) }
+            = link_to 'Projects', :projects
