@@ -9,4 +9,10 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
 
   # Add more helper methods to be used by all tests here...
+
+  class ActionDispatch::IntegrationTest
+    include Capybara::DSL
+    Capybara.app = CrowdfunderInClass::Application
+  end
+
 end

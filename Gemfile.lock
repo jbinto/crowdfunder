@@ -83,6 +83,8 @@ GEM
     guard-test (0.8.0)
       guard (>= 1.1)
       test-unit (~> 2.2)
+    haml (4.0.2)
+      tilt
     hike (1.2.2)
     http_parser.rb (0.5.3)
     httpauth (0.2.0)
@@ -193,6 +195,7 @@ DEPENDENCIES
   factory_girl_rails
   guard-livereload
   guard-test
+  haml
   jquery-rails
   pg
   pry-rails
