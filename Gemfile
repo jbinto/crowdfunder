@@ -55,3 +55,5 @@ group :test do
   gem 'capybara-webkit'
   gem 'rb-inotify', :require => false
 end
+
+gem 'sorcery'
