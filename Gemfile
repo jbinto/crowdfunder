@@ -36,3 +36,22 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+
+group :tools do
+  gem 'rb-inotify', :require => false
+  gem 'guard-test'
+  gem 'guard-livereload'
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'pry-rails'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'rb-inotify', :require => false
+end
