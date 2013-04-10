@@ -16,15 +16,30 @@ class UserAuthenticationFlowTest < ActionDispatch::IntegrationTest
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
 
-    # Try to create an account, should redirect user to root
+    # Try to create an account, should redirect user to root with a flash message
     click_button 'Create account'
     assert_equal current_path, root_path
+    assert page.has_content?('Account created')
 
     # There should be a "logout" link in the nav
     assert find('.navbar').has_link?('Log out')
   end
 
   test "failed registration" do
+    # Visit new user page
+    visit '/users/new'
+    assert_equal new_user_path, current_path
 
+    # With only one field filled in, try to create account
+    user = FactoryGirl.build(:user)
+    fill_in 'user[email]', with: user.email
+    click_button 'Create account'
+
+    # Should still be on the users create page with no flash message
+    assert_equal users_path, current_path
+    assert page.has_no_content?('Account created')
+
+    # Should show some errors
+    #assert find('.alert:first').has_content?('Try again')
   end
 end
