@@ -34,4 +34,7 @@ CrowdfunderInClass::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Allow better_errors to operate from behind the VMWare NAT
+  BetterErrors::Middleware.allow_ip! '192.168.22.1'
 end
