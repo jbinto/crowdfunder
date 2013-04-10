@@ -21,13 +21,27 @@ class ProjectFlowsTest < ActionDispatch::IntegrationTest
     assert_equal root_path, current_path
 
     # The home nav element should be active
-    assert_equal "Home", find('.navbar ul li.active a').text
+    assert_equal "Home", current_nav
 
     find('.navbar ul').click_link('Projects')
     assert_equal projects_path, current_path
 
     # Now, the projects nav element should be active.
     assert_equal "Projects", find('.navbar ul li.active a').text    
+  end
+
+  test "the show page lists a particular project" do
+    project1 = FactoryGirl.create(:project, :title => "one")
+
+    visit '/projects'
+    click_link 'one'
+    
+    assert_equal project_path(project1), current_path
+    assert find('h1:first').has_content? project1.title
+  end
+
+  def current_nav
+    find('.navbar ul li.active a').text  
   end
 
 end
