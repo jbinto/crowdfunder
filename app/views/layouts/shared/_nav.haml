@@ -4,7 +4,7 @@
       %a.brand{:href => '#'} CrowdFunder
       .nav-collapse.collapse
         %ul.nav
-          %li{:class => ('active' if current_page?(root_path)) }
+          %li{:class => ('active' if controller_name == 'home') }
             = link_to 'Home', :root
-          %li{:class => ('active' if current_page?(projects_path)) }
+          %li{:class => ('active' if controller_name == 'projects') }
             = link_to 'Projects', :projects

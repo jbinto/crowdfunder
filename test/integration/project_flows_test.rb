@@ -36,7 +36,13 @@ class ProjectFlowsTest < ActionDispatch::IntegrationTest
     visit '/projects'
     click_link 'one'
     
+    # Correct URL
     assert_equal project_path(project1), current_path
+
+    # Correct nav
+    assert_equal "Projects", current_nav
+
+    # Correct project (title)
     assert find('h1:first').has_content? project1.title
   end
 
