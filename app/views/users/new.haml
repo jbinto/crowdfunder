@@ -1,0 +1,12 @@
+%h1 Sign up for an account
+%p Please enter your information below.
+
+%hr
+
+= form_for @user do |f|
+  .span6
+    = f.text_field :full_name, placeholder: "Full name", class: 'input-block-level'
+    = f.email_field :email, placeholder: "Email", class: 'input-block-level'
+    = f.password_field :password, placeholder: "Password", class: 'input-block-level'
+    .form-actions
+      = f.submit 'Create account', class: 'btn btn-primary'

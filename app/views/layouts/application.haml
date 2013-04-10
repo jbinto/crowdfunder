@@ -8,4 +8,6 @@
   %body
     = render 'layouts/shared/nav'
     .container
+      - if flash[:notice]
+        .alert.alert_success= flash[:notice]
       = yield
