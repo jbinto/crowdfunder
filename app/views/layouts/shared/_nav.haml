@@ -8,3 +8,8 @@
             = link_to 'Home', :root
           %li{:class => ('active' if controller_name == 'projects') }
             = link_to 'Projects', :projects
+      .pull-right
+        - if logged_in?
+          = link_to 'Log out', '#', class: 'btn'
+        - else
+          = link_to 'Sign Up', new_user_path, class: 'btn btn-primary'
