@@ -3,3 +3,5 @@
   %em= @project.teaser
 
 %p= @project.description
+
+= link_to 'Back this project', new_project_pledge_path(@project), :class => "btn btn-success"

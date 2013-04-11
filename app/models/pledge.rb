@@ -1,7 +1,7 @@
 class Pledge < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
-  attr_accessible :amount
+  attr_accessible :amount, :user
 
   validates :user, :presence => true
   validates :project, :presence => true

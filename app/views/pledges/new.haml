@@ -1,0 +1,11 @@
+%h1= "Contribute to #{@project.title}"
+
+How much in 
+%strong USD 
+do you want to pledge?
+
+= form_for [@project, @pledge] do |f|
+  = f.number_field :amount
+
+  .form-actions
+    = f.submit "Make your pledge", :class => "btn btn-success"
