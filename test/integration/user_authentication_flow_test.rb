@@ -60,8 +60,6 @@ class UserAuthenticationFlowTest < ActionDispatch::IntegrationTest
     click_button 'Login'
 
     assert_equal current_path, sign_in_path
-
-    puts page.body
     assert find('.alert:first').has_content?('Try again')
   end
 
