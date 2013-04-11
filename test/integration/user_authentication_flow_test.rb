@@ -7,7 +7,7 @@ class UserAuthenticationFlowTest < ActionDispatch::IntegrationTest
     assert_equal new_user_path, current_path
 
     # There should be a "sign up" link in the nav
-    assert find('.navbar').has_link?('Sign Up')
+    assert_not_signed_in
 
     # Fill in the form
     user = FactoryGirl.build(:user)
@@ -22,7 +22,7 @@ class UserAuthenticationFlowTest < ActionDispatch::IntegrationTest
     assert page.has_content?('Account created')
 
     # There should be a "logout" link in the nav
-    assert find('.navbar').has_link?('Log out')
+    assert_signed_in
   end
 
   test "failed registration" do
@@ -42,4 +42,39 @@ class UserAuthenticationFlowTest < ActionDispatch::IntegrationTest
     # Should show some errors
     assert find('.alert:first').has_content?('Try again')
   end
+
+  test "successful log in" do
+    setup_logged_in_user
+    
+    # Ensure we are signed in
+    visit '/'
+    assert_signed_in
+  end
+
+  test "successful log out" do
+    Capybara.current_driver = Capybara.javascript_driver
+
+    setup_logged_in_user
+
+    visit '/projects'
+
+    puts page.body
+    click_link 'Log out'
+
+    visit '/'
+    assert_not_signed_in
+
+  end
+
+  def assert_signed_in
+    assert find('.navbar').has_link?('Log out')
+    assert find('.navbar').has_no_link?('Sign up')
+  end
+
+  def assert_not_signed_in
+    assert find('.navbar').has_no_link?('Log out')
+    assert find('.navbar').has_link?('Sign up')
+  end
+
+
 end

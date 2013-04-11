@@ -1,0 +1,8 @@
+%h1 Sign in
+
+= form_tag session_path, :method => :post do
+  .span6
+    = text_field_tag 'email', params[:email], :placeholder => "Email", class: 'input-block-level'
+    = password_field_tag 'password', params[:password], :placeholder => "Password", class: 'input-block-level'
+    .form-actions
+      = submit_tag 'Login', class: 'btn btn-primary'

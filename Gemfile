@@ -56,6 +56,7 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'rb-inotify', :require => false
+  gem 'database_cleaner'
 end
 
 gem 'sorcery'
