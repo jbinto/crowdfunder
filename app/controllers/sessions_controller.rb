@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
     if @user
       redirect_to :root, :notice => "You are now signed in."
     else
-      flash.now[:alert] = "Invalid username or password. Try again."
-      render :new
+      flash[:alert] = "Invalid username or password. Try again."
+      redirect_to sign_in_path
     end
   end
 

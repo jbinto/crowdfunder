@@ -9,5 +9,7 @@
     = render 'layouts/shared/nav'
     .container
       - if flash[:notice]
-        .alert.alert_success= flash[:notice]
+        .alert.alert-success= flash[:notice]
+      - if flash[:alert]
+        .alert.alert-error= flash[:alert]
       = yield

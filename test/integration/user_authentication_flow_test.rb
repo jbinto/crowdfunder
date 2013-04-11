@@ -51,6 +51,20 @@ class UserAuthenticationFlowTest < ActionDispatch::IntegrationTest
     assert_signed_in
   end
 
+  test "failed log in" do
+    visit '/'
+    click_link 'Sign in'
+
+    fill_in "email", with: "xxxx"
+    fill_in "password", with: "xxxx"
+    click_button 'Login'
+
+    assert_equal current_path, sign_in_path
+
+    puts page.body
+    assert find('.alert:first').has_content?('Try again')
+  end
+
   test "successful log out" do
     Capybara.current_driver = Capybara.javascript_driver
 
@@ -58,7 +72,6 @@ class UserAuthenticationFlowTest < ActionDispatch::IntegrationTest
 
     visit '/projects'
 
-    puts page.body
     click_link 'Log out'
 
     visit '/'
