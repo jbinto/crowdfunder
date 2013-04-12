@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  test "email must be unique" do     
+    user = FactoryGirl.create(:user)
+    user2 = user.dup
+    refute user2.save
+  end
+
 end
