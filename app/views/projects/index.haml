@@ -3,11 +3,4 @@
 %h2
   %small= page_entries_info @projects
 
-
-%ul
-  -@projects.each do |project|
-    %li
-      = link_to project.title, project
-      %p= project.teaser
-
-= paginate @projects
+= render 'shared/project_index', :projects => @projects
