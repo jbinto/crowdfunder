@@ -6,5 +6,6 @@ FactoryGirl.define do
     teaser "Now you too can run at 5Ghz!"
     description "A mostly useless project, please give us your money!"
     goal 25000
+    user
   end
 end

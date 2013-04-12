@@ -24,6 +24,9 @@ class PledgeFlowsTest < ActionDispatch::IntegrationTest
     # User should be redirected back to root with a message
     assert_equal root_path, current_path
     assert find('.alert:first').has_content?("Thanks for pledging")
+
+    # An email should have been sent to the user
+    assert_equal last_email.to.first, project.user.email
   end
 
   test "invalid pledge" do

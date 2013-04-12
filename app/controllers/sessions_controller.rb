@@ -16,4 +16,9 @@ class SessionsController < ApplicationController
     logout
     redirect_to :root, notice: "You have been signed out."
   end
+
+  protected
+  def set_nav_state
+    @nav = "session"
+  end
 end
