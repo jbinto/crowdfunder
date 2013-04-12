@@ -1,0 +1,7 @@
+%h2 Listing your projects
+
+%ul
+  -@projects.each do |project|
+    %li.project
+      = link_to project.title, project
+      %p= project.teaser
