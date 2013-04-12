@@ -10,7 +10,7 @@ class MyProjectFlowsTest < ActionDispatch::IntegrationTest
     2.times { FactoryGirl.create :project, user: other_user, title: "NotMine" }
 
     visit '/my/projects'
-    page.assert_selector('li.project', count: 3)
+    page.assert_selector('tr.project', count: 3)
     assert page.has_no_content?('NotMine')
   end
 
