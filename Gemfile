@@ -63,5 +63,6 @@ end
 gem 'sorcery'
 gem 'haml'
 gem 'kaminari'
+gem 'kaminari-bootstrap'
 
 

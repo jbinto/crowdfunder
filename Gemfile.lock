@@ -103,6 +103,9 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kaminari-bootstrap (0.1.3)
+      kaminari (>= 0.13.0)
+      rails
     launchy (2.2.0)
       addressable (~> 2.3)
     letter_opener (1.1.0)
@@ -211,6 +214,7 @@ DEPENDENCIES
   haml
   jquery-rails
   kaminari
+  kaminari-bootstrap
   letter_opener
   pg
   pry-rails
