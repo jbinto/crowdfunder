@@ -61,5 +61,7 @@ group :test do
 end
 
 gem 'sorcery'
-
 gem 'haml'
+gem 'kaminari'
+
+
