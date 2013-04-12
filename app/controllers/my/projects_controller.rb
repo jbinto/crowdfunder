@@ -39,4 +39,9 @@ class My::ProjectsController < ApplicationController
     end
 
   end
+
+  protected
+  def set_nav_state
+    @nav = "my/projects"
+  end
 end

@@ -13,4 +13,9 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  protected
+  def set_nav_state
+    @nav = "users"
+  end
 end
