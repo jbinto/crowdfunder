@@ -1,0 +1,15 @@
+%h1 New project
+
+/ Note: 'well' is a Bootstrap class that represents an 'inset' container. 
+/ See https://groups.google.com/forum/?fromgroups=#!topic/twitter-bootstrap/cfo2RbK2830
+
+.well
+  = link_to [:my, :projects], :class => 'btn btn-small' do
+    &laquo; My Projects
+
+= form_for [:my, @project] do |f| 
+  = render 'shared/form_errors', f: f
+  / Rails magic: Pass a form to render, it will look for _form template in the current view context
+  = render f
+  .form-actions
+    = f.submit 'Publish project', class: 'btn'

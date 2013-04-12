@@ -6,6 +6,11 @@ class My::ProjectsController < ApplicationController
   end
 
   def new
+    # Prepopulate the current user in the object we're building.
+
+    # Aha moment: This is the first time I've seen a use for constructing
+    # an object in the "new" action (rather than just doing form_for Project.new).
+    @project = current_user.projects.build
   end
 
   def edit
@@ -25,6 +30,13 @@ class My::ProjectsController < ApplicationController
   end
 
   def create
+    project = current_user.projects.build params[:project]
+
+    if project.save
+      redirect_to my_projects_path, :notice => "Project #{project.title} was created."
+    else
+      render :new
+    end
 
   end
 end

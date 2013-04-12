@@ -10,6 +10,6 @@ CrowdfunderInClass::Application.routes.draw do
   resource :session, only: ['create', 'destroy']
 
   namespace :my do
-    resources :projects, only: ['index', 'create', 'edit', 'destroy', 'update']
+    resources :projects, except: ['show']
   end
 end

@@ -27,7 +27,20 @@ class MyProjectFlowsTest < ActionDispatch::IntegrationTest
     assert page.has_content?("doesn't exist")
   end
 
-  test "successful creation of project makes it public" do
+  test "can create a project" do
+    me = setup_logged_in_user
+    project = FactoryGirl.build(:project, user: me)
+
+    visit '/my/projects/new'
+    fill_in "project[title]", with: "abc"
+    fill_in "project[teaser]", with: "abc"
+    fill_in "project[description]", with: "abc"
+    fill_in "project[goal]", with: "392"
+
+    click_button 'Publish project'
+
+    assert_equal my_projects_path, current_path
+    assert find('.alert').has_content?('was created')
 
   end
 
