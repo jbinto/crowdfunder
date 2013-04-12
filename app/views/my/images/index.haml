@@ -1,0 +1,13 @@
+%h4= "Images for #{@project.title}"
+
+%ul.thumbnails
+  - @images.each do |image|
+    %li.span3= image_tag image.file.url
+
+%h4= "Add an image to #{@project.title}"
+
+= form_for [:my, @project, @image] do |f|
+  = f.file_field :file
+  .form-actions
+    = f.submit "Send image"
+

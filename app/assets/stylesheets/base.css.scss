@@ -1,10 +1,6 @@
 @import "bootstrap";
+@import "bootstrap-responsive";
 
 body {
   padding-top: 60px
 }
-
-ul li.project:nth-child(even) {
-  background-color: #f0f0f0;
-}
-
