@@ -15,7 +15,16 @@ class MyProjectFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "can't edit someone else's project" do
+    me = setup_logged_in_user
+    other_user = FactoryGirl.create(:user)
+    other_users_project = FactoryGirl.create(:project, user: other_user)
 
+    visit edit_my_project_path(other_users_project)
+    # assert 404? No, apparently that's not "integrationy" enough
+    # as per https://groups.google.com/forum/?fromgroups=#!topic/ruby-capybara/NOvbNlykwpA
+    # Test for content instead
+
+    assert page.has_content?("doesn't exist")
   end
 
   test "successful creation of project makes it public" do
