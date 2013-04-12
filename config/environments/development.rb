@@ -37,4 +37,8 @@ CrowdfunderInClass::Application.configure do
 
   # Allow better_errors to operate from behind the VMWare NAT
   BetterErrors::Middleware.allow_ip! '192.168.22.1'
+
+  # Set up development mailer.
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
+  config.action_mailer.delivery_method = :letter_opener
 end
