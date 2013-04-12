@@ -5,6 +5,7 @@ How much in
 do you want to pledge?
 
 = form_for [@project, @pledge] do |f|
+  = render 'shared/form_errors', f: f
   = f.number_field :amount
 
   .form-actions

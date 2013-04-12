@@ -26,6 +26,25 @@ class PledgeFlowsTest < ActionDispatch::IntegrationTest
     assert find('.alert:first').has_content?("Thanks for pledging")
   end
 
+  test "invalid pledge" do
+    setup_logged_in_user
+    project = goto_project
+
+    # Back the project    
+    click_link 'Back this project'
+    assert_equal new_project_pledge_path(project), current_path
+
+    # Don't fill out the form, just click the button
+    click_button "Make your pledge"
+
+    assert_equal project_pledges_path(project), current_path
+
+    # XXX: Not sure why '.alert:first' returns nothing here. Hmm.
+    assert find('.alert').has_content?('Try again')
+  end
+
+
+
   def goto_project
     # Make a single dummy project
     project = FactoryGirl.create(:project)

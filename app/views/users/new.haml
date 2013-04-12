@@ -5,12 +5,7 @@
 
 = form_for @user do |f|
   .span6
-    - unless f.object.errors.empty?
-      .alert.alert-error
-        %strong Try again after fixing the following errors:
-        %ul
-          - f.object.errors.full_messages.each do |msg|
-            %li= msg
+    = render 'shared/form_errors', f: f
     = f.text_field :full_name, placeholder: "Full name", class: 'input-block-level'
     = f.email_field :email, placeholder: "Email", class: 'input-block-level'
     = f.password_field :password, placeholder: "Password", class: 'input-block-level'
